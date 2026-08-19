@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkatePark Villa Luro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header / Navegación móvil -->
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="logo-text">SKATEPARK VILLA LURO</h1>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav id="mobile-nav" class="mobile-nav">
+            <ul>
+                <li><a href="#bienvenida">Bienvenida</a></li>
+                <li><a href="#filosofia">Filosofía</a></li>
+                <li><a href="#reglas">Reglas</a></li>
+                <li><a href="#donar">Donar</a></li>
+                <li><a href="#clases">Clases</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. Bienvenida & Hero con foto principal (ASSETS) -->
+        <section id="bienvenida" class="hero-section">
+            <div class="hero-image-container">
+                <!-- Fotografías reales de ASSETS en rotación automática -->
+                <div class="photo-placeholder" aria-label="Fotografía del SkatePark Villa Luro">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/270BACED-38C7-473F-9369-6AD228513CDF 1.png" alt="SkatePark Villa Luro" class="hero-slide active">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/56B8DBD1-4150-4B02-AF81-72F7F1817EA3 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/Captura de pantalla 2026-08-18 105757 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_0379 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_1218 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_9243 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_9368 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_9377 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                    <img src="ASSETS/skatepark-villa-luro.jpg/IMG_9447 1.png" alt="SkatePark Villa Luro" class="hero-slide">
+                </div>
+            </div>
+            <div class="hero-content">
+                <span class="tag">Comunidad & Skate</span>
+                <h2>Bienvenidos al SkatePark Villa Luro CABA Bs As</h2>
+                <p>Un espacio para encontrarnos, patinar, aprender y compartir.</p>
+                <div class="hero-quote">
+                    <strong>La pista es nuestra. Entre todos la cuidamos.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Filosofía -->
+        <section id="filosofia" class="content-section">
+            <span class="section-number">01</span>
+            <h2>Más que una pista</h2>
+            <p class="lead">El skate también es comunidad.</p>
+            <div class="carousel-wrapper">
+                <div class="principles-carousel" id="principles-carousel">
+                    <div class="principle-card">
+                        <h3>Respeto</h3>
+                        <p>Todas las personas merecen el mismo respeto, sin importar su edad o nivel.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Empatía</h3>
+                        <p>Entendé que cada persona está atravesando su propio proceso de aprendizaje.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Escuchar</h3>
+                        <p>Prestá atención antes de juzgar o responder.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Compartir</h3>
+                        <p>La pista es un espacio común; aprendamos a compartirla.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Equipo</h3>
+                        <p>Ayudarnos entre todos hace crecer a la comunidad.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Nadie es más...</h3>
+                        <p>La experiencia no te hace superior a otra persona.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Aprender</h3>
+                        <p>Todos tenemos algo que aprender y algo que enseñar.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Cuidar</h3>
+                        <p>Cuidá la pista, sus instalaciones y el espacio que compartimos.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Incluir</h3>
+                        <p>Hay lugar para principiantes, avanzados y todos los niveles.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3>Disfrutar</h3>
+                        <p>Venimos a patinar, aprender y pasarla bien.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Reglas (Constitución del SkatePark) -->
+        <section id="reglas" class="content-section alt-bg">
+            <span class="section-number">02</span>
+            <h2>Las reglas de la pista</h2>
+            <p class="lead">Constitución del SkatePark</p>
+            <ol class="rules-list">
+                <li>Respetá a los demás.</li>
+                <li>Mirá antes de entrar a la pista.</li>
+                <li>Respetá los turnos y las líneas.</li>
+                <li>Si estás aprendiendo, preguntá sin miedo.</li>
+                <li>Cuidá las instalaciones y obstáculos.</li>
+                <li>Mantené limpio el lugar.</li>
+                <li>Usá elementos de protección.</li>
+                <li>Respetá los diferentes niveles.</li>
+                <li>No dejes objetos en zonas de circulación.</li>
+                <li>Disfrutá y ayudá a otros a hacerlo.</li>
+            </ol>
+        </section>
+
+        <!-- 4. Donaciones (Limpieza y Mantenimiento) -->
+        <section id="donar" class="content-section">
+            <span class="section-number">03</span>
+            <h2>Esta pista depende de nosotros</h2>
+            <p>Mantener esta pista en buenas condiciones requiere tiempo, esfuerzo y recursos. Las donaciones nos ayudan a comprar elementos de limpieza, materiales y todo lo necesario para mantener el SkatePark limpio, cuidado y disponible para toda la comunidad, los sábados a las 13 hs nos encontramos en una reunión abierta de la comunidad para conversar, escuchar propuestas, organizarnos y participar en voluntariados para mejorar y cuidar el SkatePark están invitados a participar.</p>
+            <div class="action-card">
+                <h3>Colaborá con el mantenimiento</h3>
+                <p class="alias-info">Alias: <strong>[PENDIENTE.ALIAS]</strong></p>
+                <a href="#donar" class="btn btn-primary" id="copy-alias-btn">Copiar Alias</a>
+            </div>
+        </section>
+
+        <!-- 5. Clases de Skate y Solicitud -->
+        <section id="clases" class="content-section alt-bg">
+            <span class="section-number">04</span>
+            <h2>¿Querés aprender a patinar?</h2>
+            <p>¿Te interesa tomar clases gratuitas? Contamos con acompañamiento profesional para todos los niveles. Te esperamos para compartir una clase grupal, gratuita y comunitaria, donde podés aprender, practicar y disfrutar junto a otros. No tenés patineta, te prestamos una.</p>
+            <p>Martes de 15 a 19 h · Jueves de 15 a 19 h · Sábados de 10 a 17 h</p>
+            <p>¿Querés tu clase personalizada? Solicitala completando el formulario.</p>
+            
+            <div class="form-container">
+                <h3>Reservá tu clase</h3>
+                <form id="clase-form">
+                    <div class="form-group">
+                        <label for="dia">Día</label>
+                        <input type="text" id="dia" name="dia" required placeholder="Ej: Sábados">
+                    </div>
+                    <div class="form-group">
+                        <label for="horario">Horario</label>
+                        <input type="text" id="horario" name="horario" required placeholder="Ej: 10:00 h">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Solicitar Clase</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 6. Comentarios / Sugerencias -->
+        <section id="comentarios" class="content-section">
+            <span class="section-number">05</span>
+            <h2>Tu opinión construye la pista</h2>
+            <p>Dejanos tus comentarios, sugerencias o ideas para seguir mejorando el espacio.</p>
+            <form id="comentario-form" class="simple-form">
+                <div class="form-group">
+                    <textarea id="comentario-texto" name="comentario" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary">Enviar Comentario</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Botón flotante WhatsApp -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="Contacto por WhatsApp">
+            <span>💬 WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- Footer institucional -->
+    <footer id="contacto" class="site-footer">
+        <h3>Nos vemos en la pista.</h3>
+        <p>Patiná. Compartí. Respetá. Cuidá.</p>
+        <p class="footer-copy">© 2026 SkatePark Villa Luro. La pista es de todos.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
