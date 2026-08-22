@@ -439,14 +439,13 @@ p {
 .whatsapp-float a {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background-color: #25d366;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 50px;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background-color: var(--accent-color);
+    color: #000;
+    border-radius: 50%;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     transition: transform 0.2s;
 }
