@@ -480,21 +480,27 @@ p {
 @keyframes editorialGlitch {
     0%, 88%, 100% {
         transform: translate(0, 0);
+        opacity: 1;
     }
     89% {
         transform: translate(-2px, 1px);
+        opacity: 1;
     }
     90% {
         transform: translate(3px, -1px);
+        opacity: 0;
     }
     91% {
         transform: translate(-1px, 2px);
+        opacity: 1;
     }
     92% {
         transform: translate(1px, -2px);
+        opacity: 1;
     }
     93% {
         transform: translate(0, 0);
+        opacity: 1;
     }
 }
 
@@ -633,6 +639,54 @@ p {
 
 @media (prefers-reduced-motion: reduce) {
     .breathing-text {
+        animation: none;
+    }
+}
+
+/* Initial Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+}
+
+.page-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-wheel-container {
+    animation: spinWheel 0.85s steps(10, end) infinite;
+    transform-origin: center;
+}
+
+.skateboard-wheel-svg {
+    filter: drop-shadow(0 0 12px rgba(212, 255, 0, 0.3));
+}
+
+@keyframes spinWheel {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-loader {
+        transition: none;
+    }
+    .loader-wheel-container {
         animation: none;
     }
 }

@@ -129,4 +129,23 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.add('active');
         }, 5000);
     }
+
+    // 6. Initial Loader removal
+    const pageLoader = document.getElementById('page-loader');
+    if (pageLoader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                pageLoader.classList.add('fade-out');
+                setTimeout(() => {
+                    pageLoader.remove();
+                }, 400);
+            }, 300);
+        });
+        setTimeout(() => {
+            if (pageLoader && !pageLoader.classList.contains('fade-out')) {
+                pageLoader.classList.add('fade-out');
+                setTimeout(() => { pageLoader.remove(); }, 400);
+            }
+        }, 2000);
+    }
 });
