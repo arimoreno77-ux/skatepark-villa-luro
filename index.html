@@ -41,7 +41,7 @@
                 <li><a href="#reglas">Reglas</a></li>
                 <li><a href="#donar">Donar</a></li>
                 <li><a href="#clases">Clases</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#comentarios">Mensajes</a></li>
             </ul>
         </nav>
     </header>
@@ -186,7 +186,10 @@
                     <textarea id="comentario-texto" name="comentario" rows="4" placeholder="Escribí tu mensaje..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-secondary">Enviar Comentario</button>
+                <div id="comentario-exito" class="form-success-msg" aria-live="polite">¡Gracias por tu comentario! Tu opinión ayuda a construir la comunidad.</div>
             </form>
+            <h3 class="comentarios-titulo">Comentarios de la comunidad</h3>
+            <div id="comentarios-lista" class="comentarios-lista"></div>
         </section>
     </main>
 
@@ -206,6 +209,7 @@
         <p class="footer-copy">© 2026 SkatePark Villa Luro</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>

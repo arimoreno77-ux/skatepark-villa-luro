@@ -378,6 +378,11 @@ p {
     font-size: 0.95rem;
 }
 
+.form-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.4;
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -689,4 +694,67 @@ p {
     .loader-wheel-container {
         animation: none;
     }
+}
+
+/* Mensaje de éxito formulario comentarios */
+.form-success-msg {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background-color: var(--surface-color);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    opacity: 0;
+    transform: translateY(-4px);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.form-success-msg.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Lista de comentarios desde Supabase */
+.comentarios-titulo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+}
+
+.comentarios-lista {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.comentario-item {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+}
+
+.comentario-texto {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.comentario-fecha {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }

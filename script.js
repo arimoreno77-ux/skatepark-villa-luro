@@ -57,12 +57,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Configuración de Supabase
+    const SUPABASE_URL = 'https://gwjfynjqeqeahgcskpex.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_Hqh_4mtT31oh849TiTTFdA_HmZlQF35';
+    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    const comentariosLista = document.getElementById('comentarios-lista');
+
+    // Función para cargar y renderizar comentarios desde Supabase
+    async function cargarComentarios() {
+        if (!supabaseClient || !comentariosLista) return;
+        try {
+            const { data, error } = await supabaseClient
+                .from('Comentarios')
+                .select('id, Comentarios, created_at')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Error al cargar comentarios:', error);
+                return;
+            }
+
+            comentariosLista.innerHTML = '';
+            if (data && data.length > 0) {
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'comentario-item';
+                    
+                    const pTexto = document.createElement('p');
+                    pTexto.className = 'comentario-texto';
+                    pTexto.textContent = item.Comentarios;
+
+                    const pFecha = document.createElement('p');
+                    pFecha.className = 'comentario-fecha';
+                    const fechaObj = new Date(item.created_at);
+                    pFecha.textContent = !isNaN(fechaObj) ? fechaObj.toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' }) : '';
+
+                    div.appendChild(pTexto);
+                    if (pFecha.textContent) div.appendChild(pFecha);
+                    comentariosLista.appendChild(div);
+                });
+            } else {
+                comentariosLista.innerHTML = '<div class="comentario-item"><p class="comentario-texto" style="color: var(--text-secondary); text-align: center;">Sé el primero en dejar tu comentario.</p></div>';
+            }
+        } catch (err) {
+            console.error('Error inesperado al cargar comentarios:', err);
+        }
+    }
+
+    cargarComentarios();
+
     const comentarioForm = document.getElementById('comentario-form');
     if (comentarioForm) {
-        comentarioForm.addEventListener('submit', (e) => {
+        comentarioForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('¡Gracias por tu comentario! Tu opinión ayuda a construir la comunidad.');
-            comentarioForm.reset();
+            const textarea = document.getElementById('comentario-texto');
+            const submitBtn = comentarioForm.querySelector('button[type="submit"]');
+            const texto = textarea ? textarea.value.trim() : '';
+
+            if (!texto || !supabaseClient) return;
+
+            if (submitBtn) submitBtn.disabled = true;
+
+            try {
+                const { error } = await supabaseClient
+                    .from('Comentarios')
+                    .insert([{ Comentarios: texto }]);
+
+                if (error) {
+                    console.error('Error al guardar comentario:', error);
+                    alert('Hubo un error al enviar tu comentario. Intenta nuevamente.');
+                    if (submitBtn) submitBtn.disabled = false;
+                    return;
+                }
+
+                const exitoMsg = document.getElementById('comentario-exito');
+                if (exitoMsg) {
+                    exitoMsg.classList.add('show');
+                    setTimeout(() => {
+                        exitoMsg.classList.remove('show');
+                    }, 4000);
+                }
+                comentarioForm.reset();
+                await cargarComentarios();
+            } catch (err) {
+                console.error('Error inesperado al enviar comentario:', err);
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+            }
         });
     }
 
@@ -147,5 +229,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { pageLoader.remove(); }, 400);
             }
         }, 2000);
+    }
+
+    // 7. Animación typewriter para el placeholder del textarea de comentarios
+    const comentarioTextarea = document.getElementById('comentario-texto');
+    if (comentarioTextarea) {
+        const frasesSugeridas = [
+            "¿Y los baños para cuándo?",
+            "Estaría bueno tener más luces...",
+            "¿Podrían poner más bancos?",
+            "Antes de patinar, una buena idea...",
+            "¿Qué cambiarías de la pista?"
+        ];
+
+        let fraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingTimeout = null;
+
+        function typePlaceholder() {
+            if (document.activeElement === comentarioTextarea || comentarioTextarea.value.trim() !== '') {
+                return;
+            }
+
+            const currentPhrase = frasesSugeridas[fraseIndex];
+
+            if (isDeleting) {
+                charIndex--;
+                comentarioTextarea.placeholder = currentPhrase.substring(0, charIndex);
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    fraseIndex = (fraseIndex + 1) % frasesSugeridas.length;
+                    typingTimeout = setTimeout(typePlaceholder, 300);
+                    return;
+                }
+                typingTimeout = setTimeout(typePlaceholder, 25);
+            } else {
+                charIndex++;
+                comentarioTextarea.placeholder = currentPhrase.substring(0, charIndex);
+                if (charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typingTimeout = setTimeout(typePlaceholder, 1200);
+                    return;
+                }
+                typingTimeout = setTimeout(typePlaceholder, 45);
+            }
+        }
+
+        function startTypewriter() {
+            if (comentarioTextarea.value.trim() === '' && document.activeElement !== comentarioTextarea) {
+                typePlaceholder();
+            }
+        }
+
+        function stopTypewriter() {
+            clearTimeout(typingTimeout);
+            comentarioTextarea.placeholder = "";
+        }
+
+        comentarioTextarea.addEventListener('focus', () => {
+            stopTypewriter();
+        });
+
+        comentarioTextarea.addEventListener('blur', () => {
+            if (comentarioTextarea.value.trim() === '') {
+                charIndex = 0;
+                isDeleting = false;
+                startTypewriter();
+            }
+        });
+
+        comentarioTextarea.addEventListener('input', () => {
+            if (comentarioTextarea.value.trim() !== '') {
+                stopTypewriter();
+            } else if (document.activeElement !== comentarioTextarea) {
+                startTypewriter();
+            }
+        });
+
+        startTypewriter();
     }
 });
