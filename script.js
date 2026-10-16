@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyAliasBtn) {
         copyAliasBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            navigator.clipboard.writeText('skateparkluro').then(() => {
+            navigator.clipboard.writeText('[PENDIENTE.ALIAS]').then(() => {
                 const originalText = copyAliasBtn.textContent;
                 copyAliasBtn.textContent = '¡Alias copiado!';
                 setTimeout(() => {
